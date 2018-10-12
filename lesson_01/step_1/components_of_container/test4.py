@@ -3,7 +3,7 @@
 
 from bs4 import BeautifulSoup
 
-with open('index3.html', 'r') as file:
+with open('index4.html', 'r') as file:
     soup = BeautifulSoup(file.read(), 'html.parser')
     
     for i in soup.find_all('body'):
@@ -18,7 +18,7 @@ with open('index3.html', 'r') as file:
 
 from bs4 import BeautifulSoup
 
-with open('index3.html', 'r') as file:
+with open('index4.html', 'r') as file:
     soup = BeautifulSoup(file.read(), 'html.parser')
     
     for i in soup.find_all('body'):
@@ -27,12 +27,12 @@ with open('index3.html', 'r') as file:
                 print("성공")                
         else:
             print("실패")
-'''
+
 #components of container - 3
 
 from bs4 import BeautifulSoup
 
-with open('index3.html', 'r') as file:
+with open('index4.html', 'r') as file:
     soup = BeautifulSoup(file.read(), 'html.parser')
     
     for i in soup.find_all('body'):
@@ -41,3 +41,14 @@ with open('index3.html', 'r') as file:
                 print("성공")                
         else:
             print("실패")
+'''
+#components of container - 4
+
+from bs4 import BeautifulSoup
+
+with open('index4.html', 'r') as file:
+    soup = BeautifulSoup(file.read(), 'html.parser')
+    
+    for i in soup.find_all('body'):
+        if i.find('div', attrs={'class':'container'}):
+            assert(i.find('h2') and i.find('h2').get_text() == "1. Introduction")

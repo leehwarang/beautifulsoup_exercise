@@ -1,8 +1,9 @@
-# #components of container - 1
+'''
+#components of container - 1
 
 from bs4 import BeautifulSoup
 
-with open('index2.html', 'r') as file:
+with open('index3.html', 'r') as file:
     soup = BeautifulSoup(file.read(), 'html.parser')
     
     for i in soup.find_all('body'):
@@ -17,7 +18,7 @@ with open('index2.html', 'r') as file:
 
 from bs4 import BeautifulSoup
 
-with open('index2.html', 'r') as file:
+with open('index3.html', 'r') as file:
     soup = BeautifulSoup(file.read(), 'html.parser')
     
     for i in soup.find_all('body'):
@@ -26,5 +27,22 @@ with open('index2.html', 'r') as file:
                 print("성공")                
         else:
             print("실패")
+'''
+#components of container - 3
+
+from bs4 import BeautifulSoup
+
+with open('index3.html', 'r') as file:
+    soup = BeautifulSoup(file.read(), 'html.parser')
+    
+    for i in soup.find_all('body'):
+        if i.find('div', attrs={'class':'container'}):
+            assert(i.find('h6') and i.find('h6').get_text() == "February 5, 2018")
 
 
+#개선 할 점
+#TC를 4개로 나누어야 함. 
+#TC1: body에 div가 1개 있는지
+#TC2: div에 img가 1개 있는지
+#TC3: div에 img 밑에 h1이 1개 있는지
+#TC4: h1 밑에 h6이 1개 있는지
