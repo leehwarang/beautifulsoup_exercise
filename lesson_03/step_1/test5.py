@@ -15,7 +15,20 @@ with open('index5.html', 'r') as file:
     for i in soup.find_all('body'):
         if i.find_all('div', attrs={'class':'business-card'}):
             if i.find('ul', attrs={'class':'information'}):
-                if i.find_all('li'):
-                    li_list = i.find_all('li')
-                    #if li_list[0].get_text()) == "Orc" and
-                    print(li_list[0].className())
+                if i.find('li', attrs={'class':'job'}) and i.find('li', attrs={'class':'phone'}) and i.find('li', attrs={'class':'mail'}):
+                    print("성공")
+                else: 
+                    print("실패")
+                    # li_list = i.find_all('li')
+                    # b = i.find_all('li', attrs={'class':'job'})
+                    # a = li_list[0]
+                    # if i.find_all('li', attrs={'class':'job'}):
+                    #     print("성공")
+                    #     print(a)
+                    #     print(b)
+                    # else: 
+                    #     print("실패")
+                    #     print(a)
+                    #     print(b)
+                    # #if li_list[0].get_text()) == "Orc" and
+                    # #print(li_list[0].className())
