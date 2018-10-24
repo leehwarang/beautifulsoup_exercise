@@ -1,3 +1,18 @@
+from bs4 import BeautifulSoup
+
+with open('index4.html', 'r') as file:
+    soup = BeautifulSoup(file.read(), 'html.parser')
+    pre_tag = soup.body.find('h1')
+    tag = pre_tag.find_next('h6')
+
+    
+    assert(
+        pre_tag.text.strip() == 'Google Play Terms of Service'
+        and tag
+        and tag.text.strip() =='February 5, 2018'
+        and tag.find_parent('div')
+    )
+
 '''
 #components of container - 1
 
@@ -28,6 +43,7 @@ with open('index3.html', 'r') as file:
         else:
             print("실패")
 '''
+'''
 #components of container - 3
 
 from bs4 import BeautifulSoup
@@ -46,3 +62,4 @@ with open('index3.html', 'r') as file:
 #TC2: div에 img가 1개 있는지
 #TC3: div에 img 밑에 h1이 1개 있는지
 #TC4: h1 밑에 h6이 1개 있는지
+'''

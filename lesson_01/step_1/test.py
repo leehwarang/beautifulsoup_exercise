@@ -1,20 +1,31 @@
 from bs4 import BeautifulSoup
 
 with open('index.html', 'r') as file:
-    answer_dict = [{'name':'div', 'class':'container'}]
-
     soup = BeautifulSoup(file.read(), 'html.parser')
-    soup = soup.body
-    for i in soup.contents:
-        if i == '\n':
-            soup.contents.remove(i)
-    #print(soup.contents) # 태그들이 전부 리스트에 들어감. 
-    for answer in answer_dict:
-        for content in soup.contents:
-            if answer['name'] == content.name and answer['class'] == content['class'][0]:
-                print("성공")
-            else: 
-                print("실패")
+    tag = soup.body.find('div', class_="container")
+
+    assert(
+        tag
+        and tag.find_parent('body')
+    )
+
+# from bs4 import BeautifulSoup
+
+# with open('index.html', 'r') as file:
+#     answer_dict = [{'name':'div', 'class':'container'}]
+
+#     soup = BeautifulSoup(file.read(), 'html.parser')
+#     soup = soup.body
+#     for i in soup.contents:
+#         if i == '\n':
+#             soup.contents.remove(i)
+#     #print(soup.contents) # 태그들이 전부 리스트에 들어감. 
+#     for answer in answer_dict:
+#         for content in soup.contents:
+#             if answer['name'] == content.name and answer['class'] == content['class'][0]:
+#                 print("성공")
+#             else: 
+#                 print("실패")
 
     # print(soup.contents[0])
     # print(soup.contents[0].name) #태그의 이름 구하기

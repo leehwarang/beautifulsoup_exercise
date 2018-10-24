@@ -1,3 +1,14 @@
+from bs4 import BeautifulSoup
+
+with open('index2.html', 'r') as file:
+    soup = BeautifulSoup(file.read(), 'html.parser')
+    tag = soup.body.find('div', class_="container").find_next('img', src="https://res.cloudinary.com/dyiqg9qhi/image/upload/v1538867822/img_google_play_f0vk76.png")
+
+    assert(
+        tag
+        and tag.find_parent('div')
+    )
+
 #첫 번째 test code
 # from bs4 import BeautifulSoup
 
@@ -19,24 +30,24 @@
 
 #두 번째 test code
 
-from bs4 import BeautifulSoup
+# from bs4 import BeautifulSoup
 
-with open('index2.html', 'r') as file:
-    answer_dict = [{'name':'img', 'src':'https://res.cloudinary.com/dyiqg9qhi/image/upload/v1538867822/img_google_play_f0vk76.png'}]
+# with open('index2.html', 'r') as file:
+#     answer_dict = [{'name':'img', 'src':'https://res.cloudinary.com/dyiqg9qhi/image/upload/v1538867822/img_google_play_f0vk76.png'}]
 
-    soup = BeautifulSoup(file.read(), 'html.parser')
-    soup = soup.body.div
+#     soup = BeautifulSoup(file.read(), 'html.parser')
+#     soup = soup.body.div
 
-    for i in soup.contents:
-        if i == '\n':
-            soup.contents.remove(i)
+#     for i in soup.contents:
+#         if i == '\n':
+#             soup.contents.remove(i)
     
-    for answer in answer_dict:
-        for content in soup.contents:
-            if answer['name'] == content.name and answer['src'] == content['src']:
-                print("성공")
-            else:
-                print("실패")
+#     for answer in answer_dict:
+#         for content in soup.contents:
+#             if answer['name'] == content.name and answer['src'] == content['src']:
+#                 print("성공")
+#             else:
+#                 print("실패")
     
     #print(answer_dict[0]['name']) 
     #print(soup.contents[0].name) # 태그들이 전부 리스트에 들어감.
