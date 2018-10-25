@@ -2,10 +2,11 @@ from bs4 import BeautifulSoup
 
 with open('index4.html', 'r') as file:
     soup = BeautifulSoup(file.read(), 'html.parser')
-    pre_tag = soup.body.find('h1')
-    tag = pre_tag.find_next('h6')
-
-    
+    try:
+        pre_tag = soup.body.find('h1')
+        tag = pre_tag.find_next('h6')
+    except AttributeError:
+        assert()
     assert(
         pre_tag.text.strip() == 'Google Play Terms of Service'
         and tag

@@ -2,9 +2,11 @@ from bs4 import BeautifulSoup
 
 with open('index6.html', 'r') as file:
     soup = BeautifulSoup(file.read(), 'html.parser')
-    pre_tag = soup.body.find('h2')
-    tag = pre_tag.find_next('p')
-
+    try:
+        pre_tag = soup.body.find('h2')
+        tag = pre_tag.find_next('p')
+    except AttributeError:
+        assert()
     assert(
         pre_tag.text.strip() == '1. Introduction'
         and tag #p태그는 내용이 길어서 text 검사 안함

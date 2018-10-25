@@ -2,8 +2,10 @@ from bs4 import BeautifulSoup
 
 with open('index2.html', 'r') as file:
     soup = BeautifulSoup(file.read(), 'html.parser')
-    tag = soup.body.find('div', class_="birthday-card").find_next('img', src="https://image.freepik.com/free-vector/birthday-background-with-hand-drawn-gift_23-2147645419.jpg")
-
+    try:
+        tag = soup.body.find('div', class_="birthday-card").find_next('img', src="https://image.freepik.com/free-vector/birthday-background-with-hand-drawn-gift_23-2147645419.jpg")
+    except AttributeError:
+        assert()
     assert(
         tag
         and tag.find_parent('div')

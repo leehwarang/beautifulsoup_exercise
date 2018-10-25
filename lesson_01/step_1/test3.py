@@ -2,8 +2,11 @@ from bs4 import BeautifulSoup
 
 with open('index3.html', 'r') as file:
     soup = BeautifulSoup(file.read(), 'html.parser')
-    tag = soup.body.find('img', src="https://res.cloudinary.com/dyiqg9qhi/image/upload/v1538867822/img_google_play_f0vk76.png").find_next('h1')
-    
+    try:
+        tag = soup.body.find('img', src="https://res.cloudinary.com/dyiqg9qhi/image/upload/v1538867822/img_google_play_f0vk76.png").find_next('h1')
+    except AttributeError:
+        assert()
+        
     assert(
         tag
         and tag.text.strip() =='Google Play Terms of Service'

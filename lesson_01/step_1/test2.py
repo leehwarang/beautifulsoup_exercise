@@ -2,7 +2,10 @@ from bs4 import BeautifulSoup
 
 with open('index2.html', 'r') as file:
     soup = BeautifulSoup(file.read(), 'html.parser')
-    tag = soup.body.find('div', class_="container").find_next('img', src="https://res.cloudinary.com/dyiqg9qhi/image/upload/v1538867822/img_google_play_f0vk76.png")
+    try:
+        tag = soup.body.find('div', class_="container").find_next('img', src="https://res.cloudinary.com/dyiqg9qhi/image/upload/v1538867822/img_google_play_f0vk76.png")
+    except AttributeError:
+        assert()
 
     assert(
         tag

@@ -2,8 +2,10 @@ from bs4 import BeautifulSoup
 
 with open('index3.html', 'r') as file:
     soup = BeautifulSoup(file.read(), 'html.parser')
-    tag = soup.body.find('img', src="https://image.freepik.com/free-vector/birthday-background-with-hand-drawn-gift_23-2147645419.jpg").find_next('h1')
-    
+    try:
+        tag = soup.body.find('img', src="https://image.freepik.com/free-vector/birthday-background-with-hand-drawn-gift_23-2147645419.jpg").find_next('h1')
+    except AttributeError:
+        assert()
     assert(
         tag
         and tag.text.strip() =='Happy Birthday. Hope you are having a great day Michelle.'

@@ -2,9 +2,11 @@ from bs4 import BeautifulSoup
 
 with open('index6.html', 'r') as file:
     soup = BeautifulSoup(file.read(), 'html.parser')
-    pre_tag = soup.body.find('h6', class_="source-link")
-    tag = pre_tag.find_next('a', href="https://www.freepik.com/free-photos-vectors/background")
-
+    try:
+        pre_tag = soup.body.find('h6', class_="source-link")
+        tag = pre_tag.find_next('a', href="https://www.freepik.com/free-photos-vectors/background")
+    except:
+        assert()
     assert(
         tag
         and tag.find_parent('h6')
